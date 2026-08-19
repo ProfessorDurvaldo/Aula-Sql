@@ -1,0 +1,1568 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mistério em Montes Claros</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@400;700&display=swap">
+
+<style>
+  :root {
+    --paper:      #E4E7E1;
+    --surface:    #F6F7F3;
+    --surface-2:  #ECEEE8;
+    --rule:       #C4CBC2;
+    --rule-soft:  #D8DDD6;
+    --ink:        #17222B;
+    --ink-soft:   #5B6A66;
+    --ink-faint:  #869089;
+    --accent:     #1F4E9C;
+    --accent-bg:  #E2E9F5;
+    --stamp:      #A83526;
+    --stamp-bg:   #F3E3E0;
+    --ok:         #1D6B4B;
+    --ok-bg:      #DDEDE4;
+
+    --f-label: "Archivo Narrow", "Arial Narrow", system-ui, sans-serif;
+    --f-body:  "Source Serif 4", Georgia, "Times New Roman", serif;
+    --f-mono:  "JetBrains Mono", "Consolas", "Courier New", monospace;
+
+    --measure: 66ch;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper:      #10161A;
+      --surface:    #182026;
+      --surface-2:  #1E272D;
+      --rule:       #33403F;
+      --rule-soft:  #27333A;
+      --ink:        #DFE5E1;
+      --ink-soft:   #94A29D;
+      --ink-faint:  #6E7C78;
+      --accent:     #7BA7E8;
+      --accent-bg:  #1A2739;
+      --stamp:      #E38271;
+      --stamp-bg:   #2E1D1B;
+      --ok:         #6FC79B;
+      --ok-bg:      #14291F;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper:      #10161A;
+    --surface:    #182026;
+    --surface-2:  #1E272D;
+    --rule:       #33403F;
+    --rule-soft:  #27333A;
+    --ink:        #DFE5E1;
+    --ink-soft:   #94A29D;
+    --ink-faint:  #6E7C78;
+    --accent:     #7BA7E8;
+    --accent-bg:  #1A2739;
+    --stamp:      #E38271;
+    --stamp-bg:   #2E1D1B;
+    --ok:         #6FC79B;
+    --ok-bg:      #14291F;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--f-body);
+    font-size: 17px;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .folder {
+    max-width: 940px;
+    margin: 0 auto;
+    padding: clamp(18px, 4vw, 56px) clamp(14px, 4vw, 32px) 96px;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(20px, 3.2vw, 34px);
+  }
+
+  .block {
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    padding: clamp(20px, 3.4vw, 38px);
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .field {
+    font-family: var(--f-label);
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0;
+  }
+  .field::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--rule-soft);
+  }
+
+  h1, h2, h3 { margin: 0; text-wrap: balance; font-family: var(--f-label); }
+
+  h1 {
+    font-size: clamp(34px, 6.6vw, 62px);
+    font-weight: 700;
+    line-height: 1.0;
+    letter-spacing: -0.015em;
+  }
+  h2 {
+    font-size: clamp(23px, 3.4vw, 30px);
+    font-weight: 700;
+    line-height: 1.14;
+  }
+
+  p { margin: 0; max-width: var(--measure); }
+  a { color: var(--accent); text-underline-offset: 3px; }
+  a:focus-visible, summary:focus-visible,
+  input:focus-visible, button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  .lede { font-size: 19.5px; color: var(--ink-soft); }
+  .muted { color: var(--ink-soft); }
+
+  .head {
+    border: 1px solid var(--ink);
+    background: var(--surface);
+    padding: clamp(22px, 4vw, 44px);
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+  }
+  .head-top {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 22px;
+    align-items: baseline;
+    font-family: var(--f-label);
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 16px;
+  }
+  .head-top b { color: var(--ink); font-weight: 700; }
+
+  .stamp {
+    align-self: flex-start;
+    font-family: var(--f-label);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--stamp);
+    border: 2px solid var(--stamp);
+    padding: 6px 14px;
+    transform: rotate(-1.6deg);
+  }
+
+  .dossier {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin: 0;
+  }
+  .dossier div {
+    background: var(--surface-2);
+    padding: 13px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .dossier dt {
+    font-family: var(--f-label);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .dossier dd {
+    margin: 0;
+    font-family: var(--f-mono);
+    font-size: 14.5px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .tables {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(236px, 1fr));
+    gap: 14px;
+  }
+  .tbl {
+    border: 1px solid var(--rule);
+    background: var(--surface-2);
+    display: flex;
+    flex-direction: column;
+  }
+  .tbl > b {
+    font-family: var(--f-mono);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--accent);
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--rule);
+    background: var(--surface);
+  }
+  .tbl ul {
+    margin: 0;
+    padding: 10px 14px 12px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    font-family: var(--f-mono);
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+  .tbl ul li span { color: var(--ink-faint); font-size: 11px; }
+  .tbl > small {
+    padding: 0 14px 12px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    font-family: var(--f-body);
+    line-height: 1.45;
+  }
+
+  pre {
+    margin: 0;
+    background: var(--surface-2);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--accent);
+    padding: 15px 18px;
+    overflow-x: auto;
+    font-family: var(--f-mono);
+    font-size: 13.5px;
+    line-height: 1.62;
+    color: var(--ink);
+  }
+  pre .kw { color: var(--accent); font-weight: 700; }
+  pre .cm { color: var(--ink-faint); font-style: italic; }
+  code {
+    font-family: var(--f-mono);
+    font-size: 0.88em;
+    background: var(--surface-2);
+    border: 1px solid var(--rule-soft);
+    padding: 1px 5px;
+  }
+  pre code { background: none; border: 0; padding: 0; font-size: 1em; }
+
+  ul.notes {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-width: var(--measure);
+  }
+  ul.notes li { padding-left: 20px; position: relative; }
+  ul.notes li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.62em;
+    width: 8px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  ol.steps {
+    margin: 0;
+    padding-left: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 15.5px;
+    max-width: var(--measure);
+  }
+
+  .warn {
+    background: var(--stamp-bg);
+    border: 1px solid var(--stamp);
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .warn .field { color: var(--stamp); }
+  .warn .field::after { background: var(--stamp); opacity: 0.35; }
+  .warn p { color: var(--ink); }
+
+  .tip {
+    background: var(--accent-bg);
+    border-left: 3px solid var(--accent);
+    padding: 15px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .opts { display: flex; flex-direction: column; gap: 12px; }
+  details { border: 1px solid var(--rule); background: var(--surface-2); }
+  summary {
+    cursor: pointer;
+    padding: 14px 18px;
+    font-family: var(--f-label);
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.04em;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    list-style: none;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::before {
+    content: "+";
+    font-family: var(--f-mono);
+    color: var(--accent);
+    font-weight: 700;
+  }
+  details[open] summary::before { content: "\2212"; }
+  summary em {
+    font-family: var(--f-body);
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--ink-soft);
+    margin-left: auto;
+    text-align: right;
+  }
+  .details-body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border-top: 1px solid var(--rule-soft);
+    padding-top: 16px;
+    margin: 0 18px 18px;
+  }
+
+  .joins {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    overflow-x: auto;
+  }
+  .joins div {
+    background: var(--surface-2);
+    padding: 11px 16px;
+    font-family: var(--f-mono);
+    font-size: 13px;
+    white-space: nowrap;
+  }
+  .joins div b { color: var(--accent); font-weight: 700; }
+  .joins div i {
+    font-style: normal;
+    color: var(--ink-faint);
+    font-family: var(--f-body);
+    font-size: 13.5px;
+    margin-left: 10px;
+  }
+
+  /* ---------- verificador ---------- */
+  .check-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    max-width: var(--measure);
+  }
+  .check-row input {
+    flex: 1 1 240px;
+    min-width: 0;
+    font-family: var(--f-body);
+    font-size: 16px;
+    padding: 11px 14px;
+    color: var(--ink);
+    background: var(--surface-2);
+    border: 1px solid var(--rule);
+    border-radius: 0;
+  }
+  .check-row input::placeholder { color: var(--ink-faint); }
+  .check-row button {
+    font-family: var(--f-label);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 11px 22px;
+    cursor: pointer;
+    color: var(--surface);
+    background: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 0;
+  }
+  .check-row button:hover { opacity: 0.88; }
+
+  #resultado:empty { display: none; }
+  #resultado {
+    max-width: var(--measure);
+    padding: 15px 20px;
+    border-left: 3px solid var(--ink-faint);
+    background: var(--surface-2);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  #resultado b {
+    font-family: var(--f-label);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  #resultado.acerto { border-left-color: var(--ok); background: var(--ok-bg); }
+  #resultado.acerto b { color: var(--ok); }
+  #resultado.erro { border-left-color: var(--stamp); background: var(--stamp-bg); }
+  #resultado.erro b { color: var(--stamp); }
+  #resultado.pista { border-left-color: var(--accent); background: var(--accent-bg); }
+  #resultado.pista b { color: var(--accent); }
+
+  /* ---------- botão de download ---------- */
+  .download {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    align-self: flex-start;
+    max-width: 100%;
+    padding: 15px 26px 15px 20px;
+    text-decoration: none;
+    color: var(--surface);
+    background: var(--accent);
+    border: 1px solid var(--accent);
+  }
+  .download:hover { opacity: 0.9; }
+  .download span { display: flex; flex-direction: column; }
+  .download b {
+    font-family: var(--f-label);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .download small {
+    font-family: var(--f-mono);
+    font-size: 12px;
+    opacity: 0.85;
+  }
+  .download-ico {
+    font-family: var(--f-mono);
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  /* ---------- referência de comandos ---------- */
+  .ref-grupo {
+    font-family: var(--f-label);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 14px 0 -4px;
+  }
+  .ref-grupo:first-of-type { margin-top: 0; }
+
+  details.ref { border: 1px solid var(--rule); background: var(--surface-2); }
+  details.ref summary {
+    padding: 12px 16px;
+    gap: 10px;
+    font-family: var(--f-mono);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0;
+    color: var(--accent);
+    align-items: baseline;
+    flex-wrap: wrap;
+  }
+  details.ref summary i {
+    font-style: normal;
+    font-family: var(--f-body);
+    font-weight: 400;
+    font-size: 15px;
+    color: var(--ink-soft);
+  }
+  details.ref .details-body { gap: 10px; }
+
+  .exemplo { position: relative; }
+  .exemplo pre { padding-right: 96px; }
+  .copiar {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-family: var(--f-label);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 12px;
+    cursor: pointer;
+    color: var(--ink-soft);
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 0;
+  }
+  .copiar:hover { color: var(--accent); border-color: var(--accent); }
+  .copiar.feito { color: var(--ok); border-color: var(--ok); }
+
+  .files {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+  }
+  .files th, .files td {
+    text-align: left;
+    padding: 9px 14px 9px 0;
+    border-bottom: 1px solid var(--rule-soft);
+    vertical-align: top;
+  }
+  .files th {
+    font-family: var(--f-label);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .files td:first-child {
+    font-family: var(--f-mono);
+    font-size: 13.5px;
+    white-space: nowrap;
+    padding-right: 22px;
+  }
+
+  footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    font-family: var(--f-label);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    text-align: center;
+    padding-top: 8px;
+  }
+  footer p { max-width: none; }
+
+  .creditos {
+    width: 100%;
+    max-width: 360px;
+    padding-top: 16px;
+    border-top: 1px solid var(--rule);
+    letter-spacing: 0.1em;
+  }
+  .creditos a {
+    color: var(--ink-soft);
+    font-weight: 700;
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 1px;
+  }
+  .creditos a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+  .coracao {
+    color: var(--stamp);
+    font-size: 14px;
+    letter-spacing: 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="folder">
+
+  <!-- ================= CAPA ================= -->
+  <header class="head">
+    <div class="head-top">
+      <span><b>Delegacia de Homicídios</b></span>
+      <span>Montes Claros &middot; MG</span>
+      <span>Inquérito 2018/0115</span>
+    </div>
+
+    <div class="stamp">Confidencial &middot; uso interno</div>
+
+    <div>
+      <h1>Mistério em<br>Montes Claros</h1>
+      <p class="lede" style="margin-top:18px">
+        Um assassinato foi cometido. Você é a pessoa encarregada da investigação —
+        e a única prova que sobrou é o banco de dados da polícia.
+      </p>
+    </div>
+
+    <dl class="dossier">
+      <div><dt>Ocorrência</dt><dd>Assassinato</dd></div>
+      <div><dt>Data do fato</dt><dd>15/01/2018</dd></div>
+      <div><dt>Município</dt><dd>Montes Claros</dd></div>
+      <div><dt>Situação</dt><dd>Em aberto</dd></div>
+    </dl>
+  </header>
+
+  <!-- ================= O CASO ================= -->
+  <section class="block">
+    <p class="field">Relato preliminar</p>
+    <h2>Você perdeu o boletim de ocorrência</h2>
+    <p>
+      Aconteceu um assassinato no dia <b>15 de janeiro de 2018</b>, em
+      <b>Montes Claros</b>. Esses três dados — o que houve, quando e onde — é tudo
+      de que você se lembra. O boletim em si, com a descrição da cena e o nome das
+      testemunhas, sumiu.
+    </p>
+    <p>
+      O que sobrou foi o acesso ao banco de dados da polícia: endereços, carteiras
+      de motorista, depoimentos, catracas de academia, registros de eventos da
+      cidade. Quem estava lá, quem viu, quem mentiu, quem pagou — está tudo ali
+      dentro, espalhado por oito tabelas.
+    </p>
+    <p>Cabe a você juntar as peças. <b>Escrevendo consultas SQL.</b></p>
+
+    <div class="tip">
+      <p>
+        Este caso é <b>inédito</b>: foi criado especialmente para esta turma. Os
+        nomes, as ruas e os culpados são diferentes dos de qualquer versão
+        publicada na internet. Procurar a resposta no Google não vai funcionar —
+        só investigar funciona.
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= CARREGAR ================= -->
+  <section class="block">
+    <p class="field">Preparação</p>
+    <h2>Como carregar o banco</h2>
+
+    <!-- SO-LOCAL:INICIO -->
+    <a class="download" href="misterio_sql_mysql.sql" download>
+      <span class="download-ico" aria-hidden="true">↓</span>
+      <span>
+        <b>Baixar o banco</b>
+        <small>misterio_sql_mysql.sql &middot; 2,3 MB</small>
+      </span>
+    </a>
+    <!-- SO-LOCAL:FIM -->
+
+    <div class="opts">
+      <details open>
+        <summary>phpMyAdmin <em>caminho principal</em></summary>
+        <div class="details-body">
+          <ol class="steps">
+            <li>Abra <code>http://localhost/phpmyadmin</code>.</li>
+            <li>Clique na aba <b>Importar</b>, no menu de cima.</li>
+            <li>Escolha o arquivo <code>misterio_sql_mysql.sql</code> e clique em <b>Executar</b>.</li>
+            <li>O banco <code>misterio_sql</code> aparece à esquerda, com as 8 tabelas.</li>
+          </ol>
+          <p class="muted" style="font-size:15px">
+            O script cria o banco sozinho — você não precisa criar nada antes. E ele
+            sempre recomeça do zero, então dá para reimportar quantas vezes quiser
+            se os dados forem bagunçados.
+          </p>
+        </div>
+      </details>
+
+      <details>
+        <summary>MySQL Workbench <em>alternativa</em></summary>
+        <div class="details-body">
+          <ol class="steps">
+            <li><b>File → Open SQL Script</b> e escolha <code>misterio_sql_mysql.sql</code>.</li>
+            <li>Execute o script inteiro (o raio ⚡).</li>
+            <li>Depois é só <code>USE misterio_sql;</code> e investigar.</li>
+          </ol>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ================= O BANCO ================= -->
+  <section class="block">
+    <p class="field">Acervo digital &middot; 8 tabelas</p>
+    <h2>O que a polícia tem registrado</h2>
+    <p>
+      Estude o esquema antes de sair consultando. Metade da investigação é saber
+      <em>onde</em> procurar.
+    </p>
+
+    <div class="tip">
+      <p>
+        <b>Veja o diagrama pronto.</b> O banco tem as chaves estrangeiras
+        declaradas, então o phpMyAdmin desenha as relações sozinho: selecione o
+        banco <code>misterio_sql</code> e abra a aba <b>Designer</b>. As setas
+        entre as tabelas são exatamente os caminhos que você vai percorrer com
+        <code>JOIN</code>.
+      </p>
+    </div>
+
+    <div class="tables">
+      <div class="tbl">
+        <b>pessoa</b>
+        <ul>
+          <li>id <span>PK</span></li>
+          <li>nome</li>
+          <li>id_cnh <span>FK, pode ser nulo</span></li>
+          <li>endereco_numero</li>
+          <li>endereco_rua</li>
+          <li>cpf <span>CHAR(11)</span></li>
+        </ul>
+        <small>Todos os moradores da região.</small>
+      </div>
+
+      <div class="tbl">
+        <b>cnh</b>
+        <ul>
+          <li>id <span>PK</span></li>
+          <li>idade</li>
+          <li>altura <span>cm</span></li>
+          <li>cor_olhos</li>
+          <li>cor_cabelo</li>
+          <li>genero</li>
+          <li>placa_veiculo <span>CHAR(7)</span></li>
+          <li>marca_veiculo</li>
+          <li>modelo_veiculo</li>
+        </ul>
+        <small>Carteiras de motorista: aparência e veículo.</small>
+      </div>
+
+      <div class="tbl">
+        <b>boletim_ocorrencia</b>
+        <ul>
+          <li>id <span>PK</span></li>
+          <li>data <span>DATE</span></li>
+          <li>tipo</li>
+          <li>descricao</li>
+          <li>cidade</li>
+        </ul>
+        <small>Toda ocorrência da região. É por aqui que se começa.</small>
+      </div>
+
+      <div class="tbl">
+        <b>entrevista</b>
+        <ul>
+          <li>id <span>PK</span></li>
+          <li>id_pessoa <span>FK</span></li>
+          <li>transcricao</li>
+        </ul>
+        <small>Depoimentos à polícia. Guarda o id, não o nome.</small>
+      </div>
+
+      <div class="tbl">
+        <b>academia_membro</b>
+        <ul>
+          <li>id <span>PK, matrícula</span></li>
+          <li>id_pessoa <span>FK</span></li>
+          <li>nome</li>
+          <li>data_inicio <span>DATE</span></li>
+          <li>situacao <span>prata | ouro</span></li>
+        </ul>
+        <small>Matrículas da academia Corpo em Dia.</small>
+      </div>
+
+      <div class="tbl">
+        <b>academia_checkin</b>
+        <ul>
+          <li>id <span>PK</span></li>
+          <li>id_membro <span>FK</span></li>
+          <li>data <span>DATE</span></li>
+          <li>hora_entrada <span>TIME</span></li>
+          <li>hora_saida <span>TIME</span></li>
+        </ul>
+        <small>A catraca da academia registra tudo.</small>
+      </div>
+
+      <div class="tbl">
+        <b>checkin_evento</b>
+        <ul>
+          <li>id <span>PK</span></li>
+          <li>id_pessoa <span>FK</span></li>
+          <li>id_evento</li>
+          <li>nome_evento</li>
+          <li>data <span>DATE</span></li>
+        </ul>
+        <small>Quem apareceu em cada evento da cidade.</small>
+      </div>
+
+      <div class="tbl">
+        <b>renda</b>
+        <ul>
+          <li>cpf <span>PK</span></li>
+          <li>renda_anual</li>
+        </ul>
+        <small>Renda declarada. Liga por CPF, não por id.</small>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= JOINS ================= -->
+  <section class="block">
+    <p class="field">Como as tabelas se ligam</p>
+    <h2>Os caminhos entre uma tabela e outra</h2>
+    <p>
+      Nenhuma pista mora inteira em uma tabela só. Estas são as pontes que você vai
+      usar o tempo todo:
+    </p>
+    <div class="joins">
+      <div><b>JOIN</b> cnh <b>ON</b> cnh.id = pessoa.id_cnh <i>a aparência e o carro de uma pessoa</i></div>
+      <div><b>JOIN</b> entrevista <b>ON</b> entrevista.id_pessoa = pessoa.id <i>o que a pessoa depôs</i></div>
+      <div><b>JOIN</b> academia_membro <b>ON</b> academia_membro.id_pessoa = pessoa.id <i>a matrícula dela na academia</i></div>
+      <div><b>JOIN</b> academia_checkin <b>ON</b> academia_checkin.id_membro = academia_membro.id <i>os treinos daquela matrícula</i></div>
+      <div><b>JOIN</b> checkin_evento <b>ON</b> checkin_evento.id_pessoa = pessoa.id <i>os eventos que ela frequentou</i></div>
+      <div><b>JOIN</b> renda <b>ON</b> renda.cpf = pessoa.cpf <i>quanto ela ganha &mdash; repare: por CPF</i></div>
+    </div>
+
+    <p class="muted">
+      Repare que o nome da tabela aparece inteiro dos dois lados do
+      <code>=</code>. É mais longo de escrever, mas você lê a condição e entende
+      na hora o que está sendo ligado a quê — sem precisar voltar lá em cima para
+      lembrar o que era <code>c</code> ou <code>p</code>.
+    </p>
+  </section>
+
+  <!-- ================= ARMADILHAS ================= -->
+  <section class="block">
+    <p class="field">Perícia técnica</p>
+    <h2>Detalhes que derrubam quem não presta atenção</h2>
+    <ul class="notes">
+      <li>
+        <b>Datas são do tipo <code>DATE</code>.</b> Escreva entre aspas, no formato
+        <code>'AAAA-MM-DD'</code> — o dia do crime é <code>'2018-01-15'</code>.
+        Como é data de verdade, você tem <code>YEAR()</code>,
+        <code>MONTH()</code>, <code>DAYNAME()</code>, <code>DATEDIFF()</code> e
+        <code>DATE_FORMAT()</code> à disposição.
+      </li>
+      <li>
+        <b>Horários são do tipo <code>TIME</code></b>, no formato
+        <code>'HH:MM:SS'</code>. Para calcular quanto durou um treino, use
+        <code>TIMEDIFF(hora_saida, hora_entrada)</code>.
+      </li>
+      <li>
+        <b><code>altura</code> está em centímetros.</b> 1,70 m é <code>170</code>.
+      </li>
+      <li>
+        <b><code>cpf</code> é texto, não número</b> — porque CPF não é quantidade,
+        é identificação. Se fosse número, um CPF começando com zero perderia o
+        zero. Mesma coisa com <code>placa_veiculo</code>, guardada sem hífen
+        (<code>HTZ4297</code>). Guarde cru, formate só na hora de exibir.
+      </li>
+      <li>
+        <b><code>pessoa.id_cnh</code> pode ser nulo</b> — nem todo mundo dirige.
+        E o teste é <code>IS NULL</code>, nunca <code>= NULL</code>.
+      </li>
+      <li>
+        <b>Acentos não travam a busca.</b> O banco usa grafia correta
+        (<code>Januária</code>), mas a comparação ignora acento:
+        <code>WHERE cidade = 'Januaria'</code> encontra do mesmo jeito.
+      </li>
+    </ul>
+
+    <div class="warn">
+      <p class="field">Aviso</p>
+      <p>
+        A maioria dos filtros parciais devolve <b>várias</b> pessoas — isso é de
+        propósito. Só combinando <b>todas</b> as pistas de um depoimento você chega
+        a um único nome. Se a sua consulta retornou 14 suspeitas, faltou uma
+        condição. Consulta que roda não é o mesmo que consulta certa.
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= MISSÃO ================= -->
+  <section class="block">
+    <p class="field">Sua missão</p>
+    <h2>Descubra quem matou</h2>
+    <p>E, quando achar, desconfie: será que essa pessoa agiu sozinha?</p>
+    <p>Comece pelo boletim de ocorrência.</p>
+
+    <div class="exemplo"><button class="copiar" type="button">Copiar</button>
+<pre><code><span class="kw">SELECT</span> *
+<span class="kw">FROM</span> boletim_ocorrencia
+<span class="kw">WHERE</span> data = <span class="kw">'2018-01-15'</span>
+  <span class="kw">AND</span> tipo = <span class="kw">'assassinato'</span>
+  <span class="kw">AND</span> cidade = <span class="kw">'Montes Claros'</span>;</code></pre></div>
+
+    <p>
+      A descrição desse boletim aponta para as testemunhas. O depoimento das
+      testemunhas aponta para o assassino. E o depoimento do assassino aponta para
+      alguém que você ainda não imagina.
+    </p>
+    <p class="muted">
+      Cada pista que você encontrar é a pergunta da próxima consulta. Anote tudo em
+      <code>consultas.sql</code> — inclusive as tentativas que deram errado. Elas
+      mostram o seu raciocínio e valem tanto quanto as que acertaram.
+    </p>
+  </section>
+
+  <!-- ================= VERIFICADOR ================= -->
+  <section class="block">
+    <p class="field">Confirmação</p>
+    <h2>Conferindo o nome</h2>
+    <p>
+      Chegou a um nome? Digite aqui. Se errar, a página não entrega a resposta —
+      apenas devolve o caso para as suas mãos.
+    </p>
+
+    <div class="check-row">
+      <input id="nome" type="text" autocomplete="off" spellcheck="false"
+             aria-label="Nome completo do suspeito"
+             placeholder="Nome completo do suspeito">
+      <button id="btn" type="button">Verificar</button>
+    </div>
+    <div id="resultado" role="status" aria-live="polite"></div>
+  </section>
+
+  <!-- ================= REFERÊNCIA ================= -->
+  <section class="block">
+    <p class="field">Consulta rápida</p>
+    <h2>O que cada comando faz</h2>
+    <p>
+      Clique em qualquer item para ver um exemplo pronto e copiar. Todos os
+      exemplos rodam neste banco — mas <b>nenhum deles resolve o caso</b>. São só
+      demonstrações de uso, para você adaptar às suas próprias perguntas.
+    </p>
+
+    <p class="ref-grupo">Escolher e filtrar</p>
+    <div class="opts">
+
+      <details class="ref">
+        <summary><b>SELECT</b> <i>escolhe quais colunas aparecem</i></summary>
+        <div class="details-body">
+          <p>Use <code>*</code> para trazer todas as colunas, ou liste os nomes
+          separados por vírgula para trazer só o que interessa.</p>
+          <div class="exemplo"><button class="copiar" type="button">Copiar</button>
+<pre><code>SELECT nome, endereco_rua, endereco_numero
+FROM pessoa
+LIMIT 10;</code></pre></div>
+        </div>
+      </details>
+
+      <details class="ref">
+        <summary><b>DISTINCT</b> <i>lista os valores sem repetir</i></summary>
+        <div class="details-body">
+          <p>Ótimo para descobrir quais valores existem numa coluna.</p>
+          <div class="exemplo"><button class="copiar" type="button">Copiar</button>
+<pre><code>SELECT DISTINCT cidade
+FROM boletim_ocorrencia
+ORDER BY cidade;</code></pre></div>
+        </div>
+      </details>
+
+      <details class="ref">
+        <summary><b>WHERE</b> <i>filtra quais linhas entram no resultado</i></summary>
+        <div class="details-body">
+          <p>Texto e datas vão entre aspas simples. Números, não.</p>
+          <div class="exemplo"><button class="copiar" type="button">Copiar</button>
+<pre><code>SELECT nome, endereco_rua, endereco_numero
+FROM pessoa
+WHERE endereco_rua = 'Avenida do Cerrado';</code></pre></div>
+        </div>
+      </details>
+
+      <details class="ref">
+        <summary><b>AND / OR</b> <i>combina várias condições</i></summary>
+        <div class="details-body">
+          <p><code>AND</code> exige que todas sejam verdadeiras.
+          <code>OR</code> aceita qualquer uma.</p>
+          <div class="exemplo"><button class="copiar" type="button">Copiar</button>
+<pre><code>SELECT data, tipo, cidade
+FROM boletim_ocorrencia
+WHERE tipo = 'furto'
+  AND cidade = 'Januária';
+
+SELECT id, cor_cabelo, idade
+FROM cnh
+WHERE cor_cabelo = 'loiro'
+   OR cor_cabelo = 'grisalho';</code></pre></div>
+        </div>
+      </details>
+
+      <details class="ref">
+        <summary><b>&lt;&gt; e NOT</b> <i>o contrário da condição</i></summary>
+        <div class="details-body">
+          <p><code>&lt;&gt;</code> quer dizer "diferente de". Também existem
+          <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code> e
+          <code>&lt;=</code> para números e datas.</p>
+          <div class="exemplo"><button class="copiar" type="button">Copiar</button>
+<pre><code>SELECT data, tipo, cidade
+FROM boletim_ocorrencia
+WHERE cidade &lt;&gt; 'Montes Claros'
+LIMIT 10;</code></pre></div>
+        </div>
+      </details>
+
+      <details class="ref">
+        <summary><b>BETWEEN</b> <i>uma faixa de valores, incluindo as pontas</i></summary>
+        <div class="details-body">
+          <p>Funciona com números e com datas.</p>
+          <div class="exemplo"><button class="copiar" type="button">Copiar</button>
+<pre><code>SELECT id, idade, altura
+FROM cnh
+WHERE altura BETWEEN 180 AND 190;
+
+SELECT data, tipo, cidade
+FROM boletim_ocorrencia
+WHERE data BETWEEN '2017-03-01' AND '2017-03-31';</code></pre></div>
+        </div>
+      </details>
+
+      <details class="ref">
+        <summary><b>IN</b> <i>vale qualquer valor de uma lista</i></summary>
+        <div class="details-body">
+          <p>Evita escrever vários <code>OR</code> seguidos.</p>
+          <div class="exemplo"><button class="copiar" type="button">Copiar</button>
+<pre><code>SELECT data, tipo, cidade
+FROM boletim_ocorrencia
+WHERE cidade IN ('Pirapora', 'Salinas', 'Bocaiúva');</code></pre></div>
+        </div>
+      </details>
+
+      <details class="ref">
+        <summary><b>LIKE</b> <i>procura um pedaço de texto</i></summary>
+        <div class="details-body">
+          <p><code>%</code> vale por qualquer quantidade de caracteres (inclusive
+          nenhum). <code>_</code> vale por exatamente um.</p>
+          <div class="exemplo"><button class="copiar" type="button">Copiar</button>
+<pre><code>-- começa com
+SELECT nome FROM pessoa WHERE nome LIKE 'Carlos%';
+
+-- termina com
+SELECT nome FROM pessoa WHERE nome LIKE '%Silva';
+
+-- contém, em qualquer posição
+SELECT nome FROM pessoa WHERE nome LIKE '%Souza%';
+
+-- o _ marca uma posição exata
+SELECT placa_veiculo FROM cnh WHERE placa_veiculo LIKE 'A_C%';</code></pre></div>
+        </div>
+      </details>
+
+      <details class="ref">
+        <summary><b>IS NULL</b> <i>encontra campos vazios</i></summary>
+        <div class="details-body">
+          <p>Vazio não é zero nem texto em branco. E atenção:
+          <code>= NULL</code> <b>nunca</b> funciona — sempre devolve nada.
+          O certo é <code>IS NULL</code> ou <code>IS NOT NULL</code>.</p>
+          <div class="exemplo"><button class="copiar" type="button">Copiar</button>
+<pre><code>SELECT nome, id_cnh
+FROM pessoa
+WHERE id_cnh IS NULL
+LIMIT 10;</code></pre></div>
+        </div>
+      </details>
+
+    </div>
+
+    <p class="ref-grupo">Ordenar, limitar e renomear</p>
+    <div class="opts">
+
+      <details class="ref">
+        <summary><b>ORDER BY</b> <i>ordena o resultado</i></summary>
+        <div class="details-body">
+          <p><code>ASC</code> é do menor para o maior (padrão) e
+          <code>DESC</code> é do maior para o menor.</p>
+          <div class="exemplo"><button class="copiar" type="button">Copiar</button>
+<pre><code>SELECT nome, endereco_rua, endereco_numero
+FROM pessoa
+WHERE endereco_rua = 'Rua do Pequi'
+ORDER BY endereco_numero DESC;</code></pre></div>
+        </div>
+      </details>
+
+      <details class="ref">
+        <summary><b>LIMIT</b> <i>corta a quantidade de linhas</i></summary>
+        <div class="details-body">
+          <p>Combinado com <code>ORDER BY</code>, serve para pegar "o maior",
+          "o mais novo", "os cinco primeiros".</p>
+          <div class="exemplo"><button class="copiar" type="button">Copiar</button>
+<pre><code>SELECT id, idade
+FROM cnh
+ORDER BY idade DESC
+LIMIT 5;</code></pre></div>
+        </div>
+      </details>
+
+      <details class="ref">
+        <summary><b>AS</b> <i>dá um nome melhor à coluna do resultado</i></summary>
+        <div class="details-body">
+          <p>Só muda o cabeçalho que aparece na tela — não altera o banco.</p>
+          <div class="exemplo"><button class="copiar" type="button">Copiar</button>
+<pre><code>SELECT nome            AS morador,
+       endereco_rua    AS rua,
+       endereco_numero AS numero
+FROM pessoa
+LIMIT 10;</code></pre></div>
+        </div>
+      </details>
+
+    </div>
+
+    <p class="ref-grupo">Contar e resumir</p>
+    <div class="opts">
+
+      <details class="ref">
+        <summary><b>COUNT</b> <i>conta quantas linhas</i></summary>
+        <div class="details-body">
+          <p><code>COUNT(*)</code> conta todas as linhas.
+          <code>COUNT(coluna)</code> ignora as que estão vazias.</p>
+          <div class="exemplo"><button class="copiar" type="button">Copiar</button>
+<pre><code>SELECT COUNT(*) AS total_de_pessoas
+FROM pessoa;
+
+SELECT COUNT(*) AS ocorrencias_em_2017
+FROM boletim_ocorrencia
+WHERE YEAR(data) = 2017;</code></pre></div>
+        </div>
+      </details>
+
+      <details class="ref">
+        <summary><b>SUM</b> <i>soma os valores de uma coluna</i></summary>
+        <div class="details-body">
+          <p>Só faz sentido em coluna numérica.</p>
+          <div class="exemplo"><button class="copiar" type="button">Copiar</button>
+<pre><code>SELECT SUM(renda_anual) AS soma_das_rendas
+FROM renda;</code></pre></div>
+        </div>
+      </details>
+
+      <details class="ref">
+        <summary><b>AVG</b> <i>calcula a média</i></summary>
+        <div class="details-body">
+          <p>Costuma vir acompanhado de <code>ROUND</code>, senão saem muitas
+          casas decimais.</p>
+          <div class="exemplo"><button class="copiar" type="button">Copiar</button>
+<pre><code>SELECT AVG(idade) AS idade_media
+FROM cnh;</code></pre></div>
+        </div>
+      </details>
+
+      <details class="ref">
+        <summary><b>MIN e MAX</b> <i>o menor e o maior valor</i></summary>
+        <div class="details-body">
+          <p>Funcionam com números, datas e até texto (aí é ordem alfabética).</p>
+          <div class="exemplo"><button class="copiar" type="button">Copiar</button>
+<pre><code>SELECT MIN(altura) AS mais_baixo,
+       MAX(altura) AS mais_alto
+FROM cnh;
+
+SELECT MIN(data) AS primeiro_registro,
+       MAX(data) AS ultimo_registro
+FROM boletim_ocorrencia;</code></pre></div>
+        </div>
+      </details>
+
+      <details class="ref">
+        <summary><b>ROUND</b> <i>arredonda o número</i></summary>
+        <div class="details-body">
+          <p>O segundo argumento é quantas casas decimais manter.</p>
+          <div class="exemplo"><button class="copiar" type="button">Copiar</button>
+<pre><code>SELECT ROUND(AVG(idade), 1) AS idade_media,
+       ROUND(AVG(altura))    AS altura_media
+FROM cnh;</code></pre></div>
+        </div>
+      </details>
+
+    </div>
+
+    <p class="ref-grupo">Agrupar</p>
+    <div class="opts">
+
+      <details class="ref">
+        <summary><b>GROUP BY</b> <i>resume os dados por categoria</i></summary>
+        <div class="details-body">
+          <p>Transforma "quantas linhas existem" em "quantas linhas existem
+          <i>de cada tipo</i>". Toda coluna do <code>SELECT</code> ou está no
+          <code>GROUP BY</code>, ou está dentro de <code>COUNT</code>,
+          <code>SUM</code>, <code>AVG</code>…</p>
+          <div class="exemplo"><button class="copiar" type="button">Copiar</button>
+<pre><code>SELECT cidade, COUNT(*) AS ocorrencias
+FROM boletim_ocorrencia
+GROUP BY cidade
+ORDER BY ocorrencias DESC;</code></pre></div>
+        </div>
+      </details>
+
+      <details class="ref">
+        <summary><b>HAVING</b> <i>filtra DEPOIS de agrupar</i></summary>
+        <div class="details-body">
+          <p>Esta é a confusão mais comum: <code>WHERE</code> filtra as linhas
+          <b>antes</b> de agrupar; <code>HAVING</code> filtra o resultado do
+          agrupamento. Se a condição usa <code>COUNT</code>, <code>SUM</code> ou
+          <code>AVG</code>, ela tem que estar no <code>HAVING</code>.</p>
+          <div class="exemplo"><button class="copiar" type="button">Copiar</button>
+<pre><code>SELECT tipo, COUNT(*) AS quantidade
+FROM boletim_ocorrencia
+GROUP BY tipo
+HAVING COUNT(*) &gt; 100
+ORDER BY quantidade DESC;</code></pre></div>
+        </div>
+      </details>
+
+    </div>
+
+    <p class="ref-grupo">Juntar tabelas</p>
+    <div class="opts">
+
+      <details class="ref">
+        <summary><b>JOIN</b> <i>junta duas tabelas pela coluna que as liga</i></summary>
+        <div class="details-body">
+          <p>Traz só as linhas que têm par nas duas tabelas.</p>
+          <div class="exemplo"><button class="copiar" type="button">Copiar</button>
+<pre><code>SELECT pessoa.nome, cnh.marca_veiculo, cnh.modelo_veiculo
+FROM pessoa
+JOIN cnh ON cnh.id = pessoa.id_cnh
+WHERE cnh.marca_veiculo = 'Fiat'
+LIMIT 10;</code></pre></div>
+        </div>
+      </details>
+
+      <details class="ref">
+        <summary><b>LEFT JOIN</b> <i>mantém todas as linhas da primeira tabela</i></summary>
+        <div class="details-body">
+          <p>Quem não tem par na segunda tabela aparece assim mesmo, com as
+          colunas dela vazias. Use quando quiser ver justamente quem <i>não</i>
+          tem correspondência.</p>
+          <div class="exemplo"><button class="copiar" type="button">Copiar</button>
+<pre><code>SELECT pessoa.nome, cnh.marca_veiculo
+FROM pessoa
+LEFT JOIN cnh ON cnh.id = pessoa.id_cnh
+LIMIT 15;</code></pre></div>
+        </div>
+      </details>
+
+      <details class="ref">
+        <summary><b>Subconsulta</b> <i>uma consulta dentro da outra</i></summary>
+        <div class="details-body">
+          <p>O banco resolve primeiro a de dentro (entre parênteses) e usa o
+          resultado dela na de fora.</p>
+          <div class="exemplo"><button class="copiar" type="button">Copiar</button>
+<pre><code>SELECT nome, endereco_rua
+FROM pessoa
+WHERE cpf IN (SELECT cpf
+              FROM renda
+              WHERE renda_anual &gt; 1000000);</code></pre></div>
+        </div>
+      </details>
+
+    </div>
+
+    <p class="ref-grupo">Trabalhar com texto</p>
+    <div class="opts">
+
+      <details class="ref">
+        <summary><b>CONCAT</b> <i>junta pedaços de texto num só</i></summary>
+        <div class="details-body">
+          <div class="exemplo"><button class="copiar" type="button">Copiar</button>
+<pre><code>SELECT CONCAT(nome, ' — ', endereco_rua, ', ', endereco_numero) AS ficha
+FROM pessoa
+LIMIT 10;</code></pre></div>
+        </div>
+      </details>
+
+      <details class="ref">
+        <summary><b>UPPER e LOWER</b> <i>tudo em maiúscula ou minúscula</i></summary>
+        <div class="details-body">
+          <div class="exemplo"><button class="copiar" type="button">Copiar</button>
+<pre><code>SELECT nome,
+       UPPER(nome) AS em_maiuscula,
+       LOWER(nome) AS em_minuscula
+FROM pessoa
+LIMIT 5;</code></pre></div>
+        </div>
+      </details>
+
+      <details class="ref">
+        <summary><b>LEFT, RIGHT e MID</b> <i>recorta pedaços de um texto</i></summary>
+        <div class="details-body">
+          <p><code>LEFT</code> pega do começo, <code>RIGHT</code> do fim, e
+          <code>MID</code> pega a partir de uma posição.</p>
+          <div class="exemplo"><button class="copiar" type="button">Copiar</button>
+<pre><code>SELECT placa_veiculo,
+       LEFT(placa_veiculo, 3)  AS letras,
+       RIGHT(placa_veiculo, 4) AS numeros,
+       CONCAT(LEFT(placa_veiculo, 3), '-', RIGHT(placa_veiculo, 4)) AS formatada
+FROM cnh
+LIMIT 10;</code></pre></div>
+        </div>
+      </details>
+
+      <details class="ref">
+        <summary><b>LENGTH</b> <i>quantos caracteres tem o texto</i></summary>
+        <div class="details-body">
+          <div class="exemplo"><button class="copiar" type="button">Copiar</button>
+<pre><code>SELECT nome, LENGTH(nome) AS tamanho
+FROM pessoa
+ORDER BY tamanho DESC
+LIMIT 5;</code></pre></div>
+        </div>
+      </details>
+
+    </div>
+
+    <p class="ref-grupo">Trabalhar com data e hora</p>
+    <div class="opts">
+
+      <details class="ref">
+        <summary><b>YEAR, MONTH e DAY</b> <i>separa as partes de uma data</i></summary>
+        <div class="details-body">
+          <p>Só funcionam porque a coluna é do tipo <code>DATE</code>.</p>
+          <div class="exemplo"><button class="copiar" type="button">Copiar</button>
+<pre><code>SELECT data,
+       YEAR(data)  AS ano,
+       MONTH(data) AS mes,
+       DAY(data)   AS dia
+FROM boletim_ocorrencia
+LIMIT 10;</code></pre></div>
+        </div>
+      </details>
+
+      <details class="ref">
+        <summary><b>DAYNAME</b> <i>diz o dia da semana de uma data</i></summary>
+        <div class="details-body">
+          <p>Responde em inglês: <code>Monday</code>, <code>Tuesday</code>…</p>
+          <div class="exemplo"><button class="copiar" type="button">Copiar</button>
+<pre><code>SELECT data, DAYNAME(data) AS dia_da_semana
+FROM academia_checkin
+LIMIT 10;</code></pre></div>
+        </div>
+      </details>
+
+      <details class="ref">
+        <summary><b>DATE_FORMAT</b> <i>exibe a data do jeito que você quiser</i></summary>
+        <div class="details-body">
+          <p><code>%d</code> dia, <code>%m</code> mês, <code>%Y</code> ano com
+          4 dígitos.</p>
+          <div class="exemplo"><button class="copiar" type="button">Copiar</button>
+<pre><code>SELECT data,
+       DATE_FORMAT(data, '%d/%m/%Y') AS data_brasileira
+FROM boletim_ocorrencia
+LIMIT 10;</code></pre></div>
+        </div>
+      </details>
+
+      <details class="ref">
+        <summary><b>DATEDIFF</b> <i>quantos dias entre duas datas</i></summary>
+        <div class="details-body">
+          <p>A ordem importa: primeira menos a segunda.</p>
+          <div class="exemplo"><button class="copiar" type="button">Copiar</button>
+<pre><code>SELECT nome, data_inicio,
+       DATEDIFF('2018-01-31', data_inicio) AS dias_de_matricula
+FROM academia_membro
+LIMIT 10;</code></pre></div>
+        </div>
+      </details>
+
+      <details class="ref">
+        <summary><b>HOUR e MINUTE</b> <i>separa as partes de um horário</i></summary>
+        <div class="details-body">
+          <p>Servem para agrupar por faixa de horário.</p>
+          <div class="exemplo"><button class="copiar" type="button">Copiar</button>
+<pre><code>SELECT hora_entrada,
+       HOUR(hora_entrada)   AS hora,
+       MINUTE(hora_entrada) AS minuto
+FROM academia_checkin
+LIMIT 10;</code></pre></div>
+        </div>
+      </details>
+
+      <details class="ref">
+        <summary><b>TIMEDIFF</b> <i>quanto tempo passou entre dois horários</i></summary>
+        <div class="details-body">
+          <div class="exemplo"><button class="copiar" type="button">Copiar</button>
+<pre><code>SELECT hora_entrada, hora_saida,
+       TIMEDIFF(hora_saida, hora_entrada) AS duracao
+FROM academia_checkin
+LIMIT 10;</code></pre></div>
+        </div>
+      </details>
+
+    </div>
+  </section>
+
+  <!-- ================= ARQUIVOS ================= -->
+  <section class="block">
+    <p class="field">Material do caso</p>
+    <h2>O que tem na pasta</h2>
+    <div style="overflow-x:auto">
+      <table class="files">
+        <thead>
+          <tr><th>Arquivo</th><th>Para que serve</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>misterio_sql_mysql.sql</td><td>O banco completo, para importar no phpMyAdmin</td></tr>
+          <tr><td>consultas.sql</td><td>Onde você escreve e salva as suas consultas</td></tr>
+          <tr><td>index.html</td><td>Esta página</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    <p>Boa sorte, detetive</p>
+    <p class="creditos">
+      Feito com <span class="coracao" aria-label="amor">&hearts;</span> por
+      <a href="https://github.com/professordurvaldo"
+         target="_blank" rel="noopener noreferrer">Professor Durvaldo</a>
+    </p>
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  // As respostas ficam guardadas como hash. Não adianta ler o código-fonte
+  // procurando o culpado. :)
+  var RESPOSTAS = {
+    "6152984183b01dcf": ["pista", "Testemunha",
+      "Essa é a primeira testemunha, a que mora no último endereço da rua. " +
+      "Vá em frente: leia o depoimento dela na tabela entrevista."],
+    "908ee4b8c6c8c5fa": ["pista", "Testemunha",
+      "Essa é a segunda testemunha. Leia o depoimento dela na tabela entrevista — " +
+      "ele confirma uma data importante."],
+    "9de7b6ff4a6bdf1d": ["pista", "Assassino",
+      "Você identificou quem puxou o gatilho! Mas não encerre o caso ainda: " +
+      "leia o depoimento dessa pessoa. Alguém pagou por esse crime, e essa " +
+      "pessoa continua solta."],
+    "37bb9f4fd9a105a9": ["acerto", "Caso encerrado",
+      "Você chegou ao cérebro por trás do assassinato. Parabéns, detetive — " +
+      "foi preciso juntar CNH, check-ins de evento e agregação com HAVING " +
+      "para chegar até aqui."]
+  };
+
+  function normalizar(s) {
+    return s.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+            .trim().replace(/\s+/g, " ").toLowerCase();
+  }
+
+  function hash(s) {
+    var h1 = 0x811c9dc5, h2 = 0x01000193, i, c;
+    for (i = 0; i < s.length; i++) {
+      c = s.charCodeAt(i);
+      h1 = Math.imul((h1 ^ c) >>> 0, 16777619) >>> 0;
+      h2 = Math.imul((h2 ^ c) >>> 0, 2246822519) >>> 0;
+    }
+    return ("0000000" + h1.toString(16)).slice(-8) +
+           ("0000000" + h2.toString(16)).slice(-8);
+  }
+
+  var campo = document.getElementById("nome");
+  var botao = document.getElementById("btn");
+  var saida = document.getElementById("resultado");
+
+  function mostrar(classe, titulo, texto) {
+    saida.className = classe;
+    saida.textContent = "";
+    var b = document.createElement("b");
+    b.textContent = titulo;
+    var p = document.createElement("p");
+    p.textContent = texto;
+    saida.appendChild(b);
+    saida.appendChild(p);
+  }
+
+  function verificar() {
+    var bruto = campo.value;
+    var limpo = normalizar(bruto);
+    if (!limpo) {
+      mostrar("", "Aguardando", "Digite o nome completo de quem você suspeita.");
+      return;
+    }
+    var achado = RESPOSTAS[hash(limpo)];
+    if (achado) {
+      mostrar(achado[0], achado[1], achado[2]);
+    } else {
+      mostrar("erro", "Não confere",
+        "Essa pessoa não tem papel relevante no caso. Reveja suas consultas: " +
+        "se o resultado trouxe várias linhas, provavelmente faltou combinar " +
+        "alguma condição do depoimento.");
+    }
+  }
+
+  botao.addEventListener("click", verificar);
+  campo.addEventListener("keydown", function (ev) {
+    if (ev.key === "Enter") { ev.preventDefault(); verificar(); }
+  });
+
+  // ---- botões "Copiar" dos exemplos da referência ----------------------
+  function avisar(bt) {
+    var antes = bt.getAttribute("data-rotulo") || bt.textContent;
+    bt.setAttribute("data-rotulo", antes);
+    bt.textContent = "Copiado!";
+    bt.classList.add("feito");
+    setTimeout(function () {
+      bt.textContent = antes;
+      bt.classList.remove("feito");
+    }, 1600);
+  }
+
+  function copiaAntiga(texto, bt) {
+    var area = document.createElement("textarea");
+    area.value = texto;
+    area.setAttribute("readonly", "");
+    area.style.position = "fixed";
+    area.style.top = "-1000px";
+    document.body.appendChild(area);
+    area.select();
+    try {
+      if (document.execCommand("copy")) { avisar(bt); }
+    } catch (e) { /* navegador bloqueou: o aluno seleciona e copia na mão */ }
+    document.body.removeChild(area);
+  }
+
+  Array.prototype.forEach.call(
+    document.querySelectorAll(".copiar"),
+    function (bt) {
+      bt.addEventListener("click", function () {
+        var bloco = bt.parentNode.querySelector("code");
+        if (!bloco) { return; }
+        var texto = bloco.textContent;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(texto).then(
+            function () { avisar(bt); },
+            function () { copiaAntiga(texto, bt); }
+          );
+        } else {
+          copiaAntiga(texto, bt);
+        }
+      });
+    }
+  );
+})();
+</script>
+
+</body>
+</html>
