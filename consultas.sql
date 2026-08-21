@@ -146,11 +146,5 @@ WHERE data = '2018-01-15'
 
 -- 9) Qual o horário de pico da academia? Use HOUR(hora_entrada).
 
--- 10) Exiba o CPF de todos formatado como 000.000.000-00,
---     e a placa como ABC-1234. Use CONCAT, LEFT, MID e RIGHT.
-
--- 11) Exiba a data dos boletins no formato brasileiro dd/mm/aaaa.
---     Use DATE_FORMAT(data, '%d/%m/%Y').
-
--- 12) Há quantos dias o membro mais antigo da academia está matriculado,
+-- 10) Há quantos dias o membro mais antigo da academia está matriculado,
 --     contando até a data do crime? Use DATEDIFF.
